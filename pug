@@ -1,11 +1,28 @@
-doctype html
-html
-  head
-    title Pug Image Example
-  body
-    h1 Welcome to Pug Image Example
-    img(
-      src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8="
-      alt="Sample Image"
-      onmouseover="alert(document.domain)"
-    )
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pug Image XSS Example</title>
+</head>
+<body>
+    <h1>Welcome to Pug Image XSS Example</h1>
+
+    <!-- Image with XSS Payload -->
+    <img src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8="
+         alt="Sample Image"
+         onload="alert('XSS Triggered via onload! Domain: ' + document.domain)"
+    >
+
+    <p>Click the link below to trigger XSS:</p>
+    <a href="javascript:alert(document.cookie)">Click Me</a>
+
+    <!-- Alternative payload inside a script tag -->
+    <script>
+        setTimeout(() => {
+            alert('XSS Triggered via script! Domain: ' + document.domain);
+        }, 2000);
+    </script>
+
+</body>
+</html>
