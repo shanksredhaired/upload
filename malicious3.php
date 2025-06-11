@@ -1,3 +1,3 @@
 <?php
-        header('Location: gopher://192.166.218.53:80/test123');
+        header('Location: gopher://9gqwvbweum28dzyvji83u4v7gymwamyb.oastify.com/test123');
 ?>
